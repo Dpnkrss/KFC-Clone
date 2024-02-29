@@ -1,0 +1,35 @@
+.footer-wrapper {
+  margin-top: 98px;
+  border-top: 1px solid #ddd;
+}
+.footer-wrapper .footer-logo {
+  display: block;
+  margin: 0 auto;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-inner ul {
+  margin: 0;
+  padding: 0;
+}
+.footer-inner ul li {
+  list-style-type: none;
+}
+.footer-inner ul li a {
+  text-decoration: none;
+  color: #222;
+}
+.footer-inner ul li a img {
+  width: 200px;
+}
+.store-img-wrapper li {
+  display: flex;
+}
+.store-img-wrapper li a {
+  justify-content: flex-end;
+}
+.copywrite {
+  padding: 16px 0;
+  text-align: center;
+}

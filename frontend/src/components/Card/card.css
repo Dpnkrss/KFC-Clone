@@ -1,0 +1,12 @@
+.card-wrapper .card {
+  border: none;
+}
+
+.card-wrapper .card-body {
+  padding: 0;
+  padding-top: 12px;
+}
+.btn-wrapper button {
+  width: 50%;
+  border-radius: 0;
+}

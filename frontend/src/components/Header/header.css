@@ -1,0 +1,21 @@
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.auth-link {
+  display: flex;
+  list-style-type: none;
+}
+
+.auth-link li {
+  margin: 0 8px;
+}
+
+.auth-link li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #000;
+}
