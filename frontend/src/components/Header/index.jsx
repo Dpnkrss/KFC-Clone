@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../assets/img/KFC-Logo.png';
 import Menu from '../Menu';
+import { Link } from 'react-router-dom';
 import './header.css';
 
 export const Header = () => {
@@ -8,19 +9,27 @@ export const Header = () => {
     <>
       <div className='headerWrapper'>
         <div className='logo'>
-          <img width='150px' src={logo} alt='KFC Logo' />
+          <Link to='/'>
+            <img width='150px' src={logo} alt='KFC Logo' />
+          </Link>
         </div>
 
         <ul className='auth-link'>
           <li>
-            <a href='www.google.com'>
-              <i class='bi bi-geo-alt-fill'></i> Store Locator
-            </a>
+            <Link to=''>
+              <i className='bi bi-geo-alt-fill'></i> Store Locator
+            </Link>
           </li>
           <li>
-            <a href='www.google.com'>
-              <i class='bi bi-person-circle'></i> Signin/Register
-            </a>
+            <Link to='/login'>
+              <i className='bi bi-person-fill'></i> Signin/Register
+            </Link>
+          </li>
+          <li>
+            <Link to=''> My Account</Link>
+          </li>
+          <li>
+            <Link to=''> Logout</Link>
           </li>
         </ul>
       </div>
