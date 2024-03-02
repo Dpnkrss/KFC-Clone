@@ -2,8 +2,28 @@ import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 const Login = () => {
+  const { handleBlur, handleSubmit, handleChange, touched, errors, values } =
+    useFormik({
+      initialValues: {
+        email: '',
+        password: '',
+      },
+      validationSchema: Yup.object({
+        email: Yup.string()
+          .email('Please provide a valid email')
+          .required('email is required'),
+        password: Yup.string()
+          .min(6, 'Must be 6 characters ormore')
+          .required('Password is Required'),
+      }),
+      onSubmit: (values) => {
+        console.log(values);
+      },
+    });
   return (
     <>
       <Header />
@@ -25,24 +45,41 @@ const Login = () => {
             </button>
             <hr />
 
-            <form className='row g-3 '>
+            <form className='row g-3 ' onSubmit={handleSubmit}>
               <div className='col-md-12'>
-                <label htmlFor='inputEmail4' className='form-label'>
+                <label htmlFor='email' className='form-label'>
                   Email
                 </label>
-                <input type='email' className='form-control' id='inputEmail4' />
+                <input
+                  type='email'
+                  onChange={handleChange}
+                  values={values.email}
+                  onBlur={handleBlur}
+                  name='email'
+                  className='form-control'
+                  id='email'
+                />
+                <p className='error'>
+                  {touched.email && errors.email ? errors.email : null}
+                </p>
               </div>
               <div className='col-md-12'>
-                <label htmlFor='inputPassword4' className='form-label'>
+                <label htmlFor='password' className='form-label'>
                   Password
                 </label>
                 <input
                   type='password'
+                  onChange={handleChange}
+                  values={values.password}
+                  onBlur={handleBlur}
+                  name='password'
                   className='form-control'
-                  id='inputPassword4'
+                  id='password'
                 />
+                <p className='error'>
+                  {touched.password && errors.password ? errors.password : null}
+                </p>
               </div>
-
               <div className='col-12'>
                 <button type='submit' className='btn btn-primary'>
                   lOgIN Now
