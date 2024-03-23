@@ -8,10 +8,7 @@ exports.createProduct = async (req, res, next) => {
       message: 'success',
     });
   } catch (error) {
-    res.json({
-      status: false,
-      message: error,
-    });
+    next(error);
   }
 };
 
@@ -24,10 +21,7 @@ exports.getAllProducts = async (req, res, next) => {
       data: products,
     });
   } catch (error) {
-    res.json({
-      status: false,
-      message: error,
-    });
+    next(error);
   }
 };
 
@@ -40,10 +34,7 @@ exports.getProductById = async (req, res, next) => {
       data: product,
     });
   } catch (error) {
-    res.json({
-      status: false,
-      message: error,
-    });
+    next(error);
   }
 };
 
@@ -57,10 +48,7 @@ exports.updateProduct = async (req, res, next) => {
       message: 'success',
     });
   } catch (error) {
-    res.json({
-      status: false,
-      message: error,
-    });
+    next(error);
   }
 };
 
@@ -75,9 +63,6 @@ exports.deleteProduct = async (req, res, next) => {
   } catch (error) {
     console.log(error);
 
-    res.json({
-      status: false,
-      message: error.message,
-    });
+    next(error);
   }
 };
