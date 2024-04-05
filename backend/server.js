@@ -5,8 +5,10 @@ const bodyParser = require('body-parser');
 const products = require('./routes/products');
 
 const { connectDatabase } = require('./config/config');
+const cors = require('cors');
 
 connectDatabase();
+app.use(cors());
 app.use(bodyParser());
 app.use('/api/v1/', products);
 
