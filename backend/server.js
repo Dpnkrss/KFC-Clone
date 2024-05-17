@@ -3,17 +3,20 @@ const app = express();
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const products = require('./routes/products');
-
 const { connectDatabase } = require('./config/config');
+const cloudinary = require('cloudinary').v2;
 const cors = require('cors');
 
 connectDatabase();
 app.use(cors());
-app.use(bodyParser());
-app.use('/api/v1/', products);
+app.use(bodyParser({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true }));
+app.use('/api/v1', products);
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server port ${process.env.PORT}`);
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 app.use((err, req, res, next) => {
@@ -43,4 +46,8 @@ app.use((err, req, res, next) => {
     success: false,
     message: error.message || 'Internal Server Error',
   });
+});
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server listening on port ${process.env.PORT}`);
 });

@@ -4,6 +4,11 @@ export const productReducer = (state = { products: [] }, action) => {
       return {
         products: action.payload,
       };
+    case 'ADD_PRODUCT':
+      return {
+        products: [],
+        message: action.payload,
+      };
     default:
       return state;
   }
